@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import "./Header.css";
 import { animeBySearch, getGenres, getRandomAnime, getRandomAnimeByGenre } from "../../utils/jikanapi";
 function Header() {
+
   const [search, setSearch] = useState("");
   const [genres, setGenres] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState([]);
@@ -27,8 +28,6 @@ function Header() {
   };
 
   const handleGenreChange = (genreId) => {
-    // const selectedValues = Array.from(e.target.selectedOptions, option => option.value);
-    // setSelectedGenre(selectedValues);
     setSelectedGenre((prev) => {
       if (prev.includes(genreId)) {
         return prev.filter((id) => id !== genreId);
@@ -79,7 +78,7 @@ function Header() {
             onKeyDown={handleSearch}
           />
           <div className="header__dropdown-container">
-          <button onClick={toggleDropdown} class="header__dropdown-btn">SelectDropdown</button>
+          <button onClick={toggleDropdown} className="header__dropdown-btn">SelectDropdown</button>
           {dropdownOpen && (
             <div className="header__dropdown">
               {genres.map((genre) => (
