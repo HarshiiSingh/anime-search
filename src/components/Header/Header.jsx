@@ -5,10 +5,14 @@ function Header() {
   const [search, setSearch] = useState("");
   const [genres, setGenres] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState([]);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   useEffect(() => {
     getGenres().then(setGenres); // Fetch genres when component mounts
 }, []);
+  const toggleDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
 
   const handleSearch = (e) => {
     if (e.key === "Enter" && search.trim()) {
@@ -22,10 +26,18 @@ function Header() {
     }
   };
 
-  const handleGenreChange = (e) => {
-    const selectedValues = Array.from(e.target.selectedOptions, option => option.value);
-    setSelectedGenre(selectedValues);
-};
+  const handleGenreChange = (genreId) => {
+    // const selectedValues = Array.from(e.target.selectedOptions, option => option.value);
+    // setSelectedGenre(selectedValues);
+    setSelectedGenre((prev) => {
+      if (prev.includes(genreId)) {
+        return prev.filter((id) => id !== genreId);
+      } else {
+        return [...prev, genreId];
+      }
+    });
+    };
+
 
   const handleRandomAnime = () => {
     if (selectedGenre.length > 0) {
@@ -66,13 +78,22 @@ function Header() {
             onChange={(e) => setSearch(e.target.value)}
             onKeyDown={handleSearch}
           />
-          <select multiple value={selectedGenre} onChange={handleGenreChange} className="header__genre" id="">
-            {genres.map(genre => (
-                <option key={genre.mal_id} value={genre.mal_id}>
-                    {genre.name}
-                </option>
-            ))}
-          </select>
+          <div className="header__dropdown-container">
+          <button onClick={toggleDropdown} class="header__dropdown-btn">SelectDropdown</button>
+          {dropdownOpen && (
+            <div className="header__dropdown">
+              {genres.map((genre) => (
+                <label className="dropdown-option" key={genre.mal_id}>
+                  <input type="checkbox" 
+                  value={genre.mal_id}
+                  checked={selectedGenre.includes(genre.mal_id)}
+                  onChange={() => handleGenreChange(genre.mal_id)}/>
+                  {genre.name}
+                </label>
+              ))}
+            </div>
+          )}
+          </div>
           <button type="button" onClick={handleRandomAnime} className="header__randomAnimeBtn">Random Anime</button>
         </div>
       </header>
