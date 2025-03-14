@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react'
 import reactLogo from "../../assets/react.svg"
 import viteLogo from "../../../public/vite.svg"
+import { Routes, Route, useNavigate } from "react-router-dom";
 import Header from "../Header/Header.jsx";
 import Footer from "../Footer/Footer.jsx"
+import SearchPage from "../SearchPage/SearchPage.jsx";
 import { getGenres } from '../../utils/jikanapi.js';
 import './App.css'
 
@@ -16,8 +18,11 @@ function App() {
 
   return (
     <>
-      <Header/>
-      <Footer/>
+    <Header/>
+    <Routes>
+      <Route path="/search" element={<SearchPage/>}/>
+    </Routes>
+    <Footer/>
     </>
   )
 }

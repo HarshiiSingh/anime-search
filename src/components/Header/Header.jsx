@@ -1,16 +1,25 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Header.css";
-import { animeBySearch, getGenres, getRandomAnime, getRandomAnimeByGenre } from "../../utils/jikanapi";
-function Header() {
+import {
+  animeBySearch,
+  getGenres,
+  getRandomAnime,
+  getRandomAnimeByGenre,
+} from "../../utils/jikanapi";
 
+function Header() {
+  
   const [search, setSearch] = useState("");
   const [genres, setGenres] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState([]);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getGenres().then(setGenres); // Fetch genres when component mounts
-}, []);
+  }, []);
+
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
   };
@@ -18,6 +27,7 @@ function Header() {
   const handleSearch = (e) => {
     if (e.key === "Enter" && search.trim()) {
       console.log("Search for: ", search);
+      navigate(`/search?query=${encodeURIComponent(search)}`);
 
       animeBySearch(search)
         .then((results) => {
@@ -35,34 +45,33 @@ function Header() {
         return [...prev, genreId];
       }
     });
-    };
-
+  };
 
   const handleRandomAnime = () => {
     if (selectedGenre.length > 0) {
-        console.log(`Fetching a random anime from genres: ${selectedGenre.join(", ")}`);
-        getRandomAnimeByGenre(selectedGenre)
-        .then(randomAnime => {
-            if (randomAnime) {
-                console.log("Random anime from Selected Genres: ", randomAnime);
-            } else {
-                console.log("No anime found for these genres.");
-            }
-        })
+      console.log(
+        `Fetching a random anime from genres: ${selectedGenre.join(", ")}`
+      );
+      getRandomAnimeByGenre(selectedGenre).then((randomAnime) => {
+        if (randomAnime) {
+          console.log("Random anime from Selected Genres: ", randomAnime);
+        } else {
+          console.log("No anime found for these genres.");
+        }
+      });
     } else {
-        console.log("Fetching a random anime");
-        getRandomAnime()
-        .then(randomAnime => {
-            if (randomAnime) {
-                console.log("Random anime: ", randomAnime);
-            } else {
-                console.log("No anime found");
-            }
+      console.log("Fetching a random anime");
+      getRandomAnime()
+        .then((randomAnime) => {
+          if (randomAnime) {
+            console.log("Random anime: ", randomAnime);
+          } else {
+            console.log("No anime found");
+          }
         })
-        .catch(error => console.error("Error fetching random anime:", error));
+        .catch((error) => console.error("Error fetching random anime:", error));
     }
-
-  }
+  };
   return (
     <>
       {" "}
@@ -78,22 +87,32 @@ function Header() {
             onKeyDown={handleSearch}
           />
           <div className="header__dropdown-container">
-          <button onClick={toggleDropdown} className="header__dropdown-btn">SelectDropdown</button>
-          {dropdownOpen && (
-            <div className="header__dropdown">
-              {genres.map((genre) => (
-                <label className="dropdown-option" key={genre.mal_id}>
-                  <input type="checkbox" 
-                  value={genre.mal_id}
-                  checked={selectedGenre.includes(genre.mal_id)}
-                  onChange={() => handleGenreChange(genre.mal_id)}/>
-                  {genre.name}
-                </label>
-              ))}
-            </div>
-          )}
+            <button onClick={toggleDropdown} className="header__dropdown-btn">
+              SelectDropdown
+            </button>
+            {dropdownOpen && (
+              <div className="header__dropdown">
+                {genres.map((genre) => (
+                  <label className="dropdown-option" key={genre.mal_id}>
+                    <input
+                      type="checkbox"
+                      value={genre.mal_id}
+                      checked={selectedGenre.includes(genre.mal_id)}
+                      onChange={() => handleGenreChange(genre.mal_id)}
+                    />
+                    {genre.name}
+                  </label>
+                ))}
+              </div>
+            )}
           </div>
-          <button type="button" onClick={handleRandomAnime} className="header__randomAnimeBtn">Random Anime</button>
+          <button
+            type="button"
+            onClick={handleRandomAnime}
+            className="header__randomAnimeBtn"
+          >
+            Random Anime
+          </button>
         </div>
       </header>
     </>
