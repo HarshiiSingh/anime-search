@@ -18,7 +18,7 @@ function SearchPage() {
             <h2 className="searchpage__title">Search Results for "{query}"</h2>
             <div className="searchpage__grid">
                 {results.map((anime) => (
-                    <div className="anime__card">
+                    <div key ={anime.mal_id} className="anime__card">
                         <img src={anime.images.jpg.image_url} alt={anime.title} className="anime__img"/>
                         <h3>{anime.title}</h3>
                     </div>
