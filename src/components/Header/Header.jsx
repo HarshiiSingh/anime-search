@@ -54,6 +54,7 @@ function Header() {
       );
       getRandomAnimeByGenre(selectedGenre).then((randomAnime) => {
         if (randomAnime) {
+          navigate(`/details/${randomAnime.mal_id}`, {state: { anime: randomAnime } });
           console.log("Random anime from Selected Genres: ", randomAnime);
         } else {
           console.log("No anime found for these genres.");
@@ -64,6 +65,7 @@ function Header() {
       getRandomAnime()
         .then((randomAnime) => {
           if (randomAnime) {
+            navigate(`/details/${randomAnime.mal_id}`, {state: { anime: randomAnime } });
             console.log("Random anime: ", randomAnime);
           } else {
             console.log("No anime found");
