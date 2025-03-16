@@ -78,7 +78,7 @@ function Header() {
     <>
       {" "}
       <header className="header">
-        <h1 className="header__title">MyAnimeList</h1>
+        <h1 onClick={() => navigate("/")} className="header__title">MyAnimeList</h1>
         <div className="header__searchbar">
           <input
             className="header__search"

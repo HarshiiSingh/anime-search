@@ -21,7 +21,7 @@ function SearchPage() {
   };
   return (
     <>
-    
+    <div className="searchpage__container">
       <h2 className="searchpage__title">Search Results for "{query}"</h2>
       <div className="searchpage__grid">
         {results.map((anime) => (
@@ -32,7 +32,7 @@ function SearchPage() {
           />
         ))}
       </div>
-      
+      </div>
     </>
   );
 }
