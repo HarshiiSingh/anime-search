@@ -20,6 +20,7 @@
   width: 100%;
   height: 250px; /* Adjust height to match aspect ratio */
   overflow: hidden;
+  
 }
 
 /* Anime Image */
@@ -66,5 +67,5 @@
   text-overflow: ellipsis; 
   margin: 0;
   padding: 0;
-  color: black;
+  color: #D9DBF1;
 }

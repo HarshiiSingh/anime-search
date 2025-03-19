@@ -1,3 +1,8 @@
+.searchpage__container {
+  color: #D9DBF1;
+  margin-top: 50px;
+}
+
 .searchpage__grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* Ensures a responsive grid */
