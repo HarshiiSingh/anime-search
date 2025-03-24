@@ -1,0 +1,44 @@
+.searchbar__container {
+}
+
+.searchbar__container_centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+  max-width: 500px; /* Similar width to Google's search bar */
+}
+
+.searchbar__container_top {
+  display: flex;
+  height: 36px;
+  gap: 10px;
+}
+
+.searchbar__input {
+}
+
+.searchbar__input:focus {
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+.searchbar__input_centered {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 16px;
+  border: 1px solid #dfe1e5;
+  border-radius: 24px;
+  outline: none;
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.searchbar__input_top {
+  position: relative;
+  top: 2px;
+  border: 1px solid #dfe1e5;
+  border-radius: 24px;
+  outline: none;
+  transition: box-shadow 0.2s ease-in-out;
+  padding: 12px 16px;
+}
