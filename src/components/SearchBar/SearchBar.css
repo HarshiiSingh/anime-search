@@ -8,6 +8,7 @@
   gap: 15px;
   width: 100%;
   max-width: 500px; /* Similar width to Google's search bar */
+  margin: 0 0 10px;
 }
 
 .searchbar__container_top {

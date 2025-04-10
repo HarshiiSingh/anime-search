@@ -1,6 +1,7 @@
 .random__container {
   position: relative;
   bottom: 2px;
+  margin-left: 35px;
 }
 
 .random__btn {

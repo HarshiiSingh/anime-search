@@ -1,5 +1,5 @@
 import "./DetailsPage.css";
-
+import Header from "../Header/Header";
 import { useLocation } from "react-router-dom";
 
 function DetailsPage() {
@@ -22,6 +22,7 @@ function DetailsPage() {
     */
   return (
     <>
+    <Header />
       <div className="detailspage__container">
         <h2 className="detailspage__header">{anime.title}</h2>
         <div className="detailspage__content">

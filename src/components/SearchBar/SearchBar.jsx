@@ -35,7 +35,7 @@ function SearchBar() {
               : "searchbar__input_top"
           }`}
           type="search"
-          placeholder="search your show"
+          placeholder="Search your show"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           onKeyDown={handleSearch}

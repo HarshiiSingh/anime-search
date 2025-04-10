@@ -10,9 +10,10 @@ function checkResponse(res) {
 export const animeBySearch = (query) => {
     return fetch(`${BASE_URL}/anime?q=${query}&limit=20`)
     .then(response => response.json())
-    .then(data => data.data)
+    .then(data => data.data || [])
     .catch(error => {
         console.error("Error fetching search results: ", error);
+        return [];
     });
 }
 

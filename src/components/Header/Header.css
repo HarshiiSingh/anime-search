@@ -29,5 +29,5 @@
 .header__title {
   cursor: pointer;
   color: #d9dbf1;
-  margin: 0;
+  margin: 0 0 10px;
 }
