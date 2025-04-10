@@ -23,19 +23,46 @@ function DetailsPage() {
   return (
     <>
       <div className="detailspage__container">
-        <h2>{anime.title}</h2>
-        <p className="">Episodes: {anime.episodes}</p>
-        <p className="">Score: {anime.score}</p>
-        <p className="">Genres: {anime.genres.map((g) => g.name).join(", ")}</p>
-        <p className="">Synopsis: {anime.synopsis}</p>
-        <p className="">Start Date: {anime.aired.string}</p>
-        <p className="">
-          Studios:{" "}
-          {anime.studios.length > 0
-            ? anime.studios.map((s) => s.name).join(", ")
-            : "Unknown"}
-        </p>
-        <img src={anime.images.jpg.image_url} alt="" className="" />
+        <h2 className="detailspage__header">{anime.title}</h2>
+        <div className="detailspage__content">
+          <div className="detailspage__img-content">
+            <img
+              src={anime.images.jpg.image_url}
+              alt=""
+              className="detailspage__img"
+            />
+            <p className="detailspage__title"> Information</p>
+            <div className="detailspage__info">
+              <p className="detailspage__studios">
+               <b> Studios:</b>{" "}
+                {anime.studios.length > 0
+                  ? anime.studios.map((s) => s.name).join(", ")
+                  : "Unknown"}
+              </p>
+              <p className="detailspage__episodes">
+                <b>Episodes:</b> {anime.episodes}{" "}
+              </p>
+              <p className="detailspage__score"><b>Score: </b>{anime.score}</p>
+              
+            </div>
+          </div>
+
+          <div className="detailspage__context">
+            <div className="detailspage__synopsis">
+              <p className="synopsis__title">Synopsis </p>
+              <p className="synopsis__text">{anime.synopsis}</p>
+            </div>
+
+            <div className="detailspage__genres">
+              <p className="genres__title">Genres</p>
+              <p className="genres__text">
+                {anime.genres.map((g) => g.name).join(", ")}
+              </p>
+            </div>
+
+            <p className="detailspage__date"><b>Aired:</b> {anime.aired.string}</p>
+          </div>
+        </div>
       </div>
     </>
   );
