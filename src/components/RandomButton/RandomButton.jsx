@@ -19,7 +19,7 @@ function RandomButton() {
       .then(setGenres)
       .catch((error) => {
         console.error("Failed to load genres. Try again later.", error);
-      }); // Fetch genres when component mounts
+      });
   }, []);
 
   useEffect(() => {
@@ -36,6 +36,7 @@ function RandomButton() {
       document.removeEventListener("mousedown", handleClick);
     };
   }, [dropdownOpen]);
+  
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
   };

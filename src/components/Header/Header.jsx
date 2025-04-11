@@ -16,7 +16,7 @@ function Header() {
         }`}
       >
         <h1 onClick={() => navigate("/")} className="header__title">
-          MyAnimeList
+          AnimeSearch
         </h1>
         <SearchBar />
         <RandomButton />
