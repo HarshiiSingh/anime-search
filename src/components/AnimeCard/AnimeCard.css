@@ -1,5 +1,5 @@
 .card__anime {
-  width: 180px; /* Adjust size as needed */
+  width: 180px;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -7,20 +7,18 @@
   overflow: hidden;
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
-  background: transparent; /* Ensures a clean background */
+  background: transparent;
 }
 
 .card__anime:hover {
   transform: scale(1.05);
 }
 
-/* Container to wrap the image */
 .card__container {
   position: relative;
   width: 100%;
-  height: 250px; /* Adjust height to match aspect ratio */
+  height: 250px;
   overflow: hidden;
-  
 }
 
 /* Anime Image */
@@ -31,7 +29,6 @@
   display: block;
 }
 
-/* Dark overlay at the bottom for fading effect */
 .card__container::after {
   content: "";
   position: absolute;
@@ -42,7 +39,6 @@
   background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
 }
 
-/* Episode count at the bottom-left */
 .card__episode {
   position: absolute;
   bottom: 5px;
@@ -55,7 +51,6 @@
   z-index: 3;
 }
 
-/* Anime Title */
 .card__title {
   text-align: left;
   font-size: 14px;
@@ -64,8 +59,8 @@
   padding: 6px 4px;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis; 
+  text-overflow: ellipsis;
   margin: 0;
   padding: 0;
-  color: #D9DBF1;
+  color: #d9dbf1;
 }

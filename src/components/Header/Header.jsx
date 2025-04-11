@@ -3,7 +3,6 @@ import "./Header.css";
 import RandomButton from "../RandomButton/RandomButton";
 import SearchBar from "../SearchBar/SearchBar";
 
-
 function Header() {
   const navigate = useNavigate();
   const location = useLocation();

@@ -7,7 +7,7 @@ function DetailsPage() {
   const anime = location.state?.anime;
 
   if (!anime) {
-    return <h2 className="idk">No anime details available</h2>;
+    return <h2 className="detailspage__error">No anime details available</h2>;
   }
 
   /*
@@ -29,7 +29,7 @@ function DetailsPage() {
           <div className="detailspage__img-content">
             <img
               src={anime.images.jpg.image_url}
-              alt=""
+              alt={anime.title}
               className="detailspage__img"
             />
             <p className="detailspage__title"> Information</p>

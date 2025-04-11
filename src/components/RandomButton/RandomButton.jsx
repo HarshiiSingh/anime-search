@@ -12,11 +12,14 @@ function RandomButton() {
   const [genres, setGenres] = useState([]);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const navigate = useNavigate();
-  const location = useLocation();
   const dropdownRef = useRef(null);
 
   useEffect(() => {
-    getGenres().then(setGenres); // Fetch genres when component mounts
+    getGenres()
+      .then(setGenres)
+      .catch((error) => {
+        console.error("Failed to load genres. Try again later.", error);
+      }); // Fetch genres when component mounts
   }, []);
 
   useEffect(() => {
@@ -59,7 +62,7 @@ function RandomButton() {
           });
           console.log("Random anime from Selected Genres: ", randomAnime);
         } else {
-          console.log("No anime found for these genres.");
+          console.error("No anime found for these genres.");
         }
       });
     } else {
@@ -72,7 +75,7 @@ function RandomButton() {
             });
             console.log("Random anime: ", randomAnime);
           } else {
-            console.log("No anime found");
+            console.error("No anime found");
           }
         })
         .catch((error) => console.error("Error fetching random anime:", error));
@@ -84,14 +87,7 @@ function RandomButton() {
       <button type="button" onClick={handleRandomAnime} className="random__btn">
         Random Anime
       </button>
-      <div
-        ref={dropdownRef}
-        className={`genre-dropdown__container ${
-          location.pathname === "/"
-            ? "genre-dropdown__container_centered"
-            : "genre-dropdown__container_top"
-        }`}
-      >
+      <div ref={dropdownRef} className="genre-dropdown__container">
         <button onClick={toggleDropdown} className="genre-dropdown__btn">
           <img src={BurgerMenu} alt="genre" className="genre-dropdown__img" />
         </button>
