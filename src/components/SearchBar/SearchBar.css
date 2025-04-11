@@ -1,5 +1,5 @@
-.searchbar__container {
-}
+/* .searchbar__container {
+} */
 
 .searchbar__container_centered {
   display: flex;
@@ -17,8 +17,8 @@
   gap: 10px;
 }
 
-.searchbar__input {
-}
+/* .searchbar__input {
+} */
 
 .searchbar__input:focus {
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
@@ -42,4 +42,10 @@
   outline: none;
   transition: box-shadow 0.2s ease-in-out;
   padding: 12px 16px;
+}
+
+@media screen and (max-width: 627px) {
+  .searchbar__container {
+    margin: 0 0 10px 0;
+  }
 }

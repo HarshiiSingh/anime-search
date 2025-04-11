@@ -1,17 +1,17 @@
 .searchpage__container {
-  color: #D9DBF1;
+  color: #d9dbf1;
   margin-top: 50px;
 }
 
 .searchpage__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* Ensures a responsive grid */
-  gap: 10px; /* Reduces unnecessary spacing */
-  margin-top: 80px; /* Adjust space for the header */
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 10px;
+  margin-top: 80px;
   padding: 20px;
-  justify-content: center; /* Centers the grid */
-  align-items: start; /* Aligns items at the top */
-  max-width: 1200px; /* Keeps the layout clean on large screens */
+  justify-content: center;
+  align-items: start;
+  max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -22,4 +22,29 @@
 .searchpage__loading {
   font-size: 20px;
   font-weight: 700;
+}
+
+@media screen and (max-width: 627px) {
+  .searchpage__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 10px;
+  }
+
+  .searchpage__title {
+    margin: 80px 0 0;
+    text-align: center;
+    font-size: 18px;
+  }
+
+  .searchpage__grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    gap: 16px;
+    margin: 20px 0 0;
+  }
 }

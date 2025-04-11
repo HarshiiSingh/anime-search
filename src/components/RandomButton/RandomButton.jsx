@@ -1,6 +1,10 @@
 import "./RandomButton.css";
-import { getRandomAnime, getRandomAnimeByGenre, getGenres } from "../../utils/jikanapi";
-import { useState, useEffect } from "react";
+import {
+  getRandomAnime,
+  getRandomAnimeByGenre,
+  getGenres,
+} from "../../utils/jikanapi";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import BurgerMenu from "../../assets/burger-menu.svg";
 function RandomButton() {
@@ -9,11 +13,26 @@ function RandomButton() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  const dropdownRef = useRef(null);
 
-    useEffect(() => {
-      getGenres().then(setGenres); // Fetch genres when component mounts
-    }, []);
+  useEffect(() => {
+    getGenres().then(setGenres); // Fetch genres when component mounts
+  }, []);
 
+  useEffect(() => {
+    const handleClick = (evt) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(evt.target)) {
+        setDropdownOpen(false);
+      }
+    };
+
+    if (dropdownOpen) {
+      document.addEventListener("mousedown", handleClick);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClick);
+    };
+  }, [dropdownOpen]);
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
   };
@@ -61,16 +80,12 @@ function RandomButton() {
   };
 
   return (
-    
     <div className="random__container">
-      <button
-        type="button"
-        onClick={handleRandomAnime}
-        className="random__btn"
-      >
+      <button type="button" onClick={handleRandomAnime} className="random__btn">
         Random Anime
       </button>
       <div
+        ref={dropdownRef}
         className={`genre-dropdown__container ${
           location.pathname === "/"
             ? "genre-dropdown__container_centered"
@@ -83,7 +98,10 @@ function RandomButton() {
         {dropdownOpen && (
           <div className="genre-dropdown">
             {genres.map((genre) => (
-              <label className="genre-dropdown-option__label" key={genre.mal_id}>
+              <label
+                className="genre-dropdown-option__label"
+                key={genre.mal_id}
+              >
                 <input
                   type="checkbox"
                   value={genre.mal_id}
