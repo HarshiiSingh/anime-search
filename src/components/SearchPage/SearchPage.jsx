@@ -46,6 +46,9 @@ function SearchPage() {
       <h2 className="searchpage__title">Search Results for "{query}"</h2>
       {loading && <p className="searchpage__loading"> Loading...</p>}
       {error && <p className="searchpage__error">{error}</p> }
+      {!loading && results.length === 0 && !error && (
+         <p className="searchpage__noresults">No results found for "{query}".</p>
+      )}
       <div className="searchpage__grid">
         {results.map((anime) => (
           <AnimeCard
