@@ -1,0 +1,107 @@
+.detailspage__container {
+  color: #d9dbf1;
+  margin-top: 50px;
+}
+
+.detailspage__content {
+  display: flex;
+  text-align: left;
+}
+
+.detailspage__context {
+  margin-left: 20px;
+}
+.synopsis__title {
+  font-size: 18px;
+  font-weight: 700;
+  padding-bottom: 5px;
+  border-bottom: 1px #acb0bd solid;
+  margin: 0;
+}
+
+.synopsis__text {
+  margin-top: 10px;
+  padding: 0;
+}
+
+.detailspage__img {
+  width: 275px;
+  height: 350px;
+}
+
+.genres__title {
+  font-weight: 700;
+  font-size: 18px;
+  margin: 0;
+  border-bottom: 1px #acb0bd solid;
+}
+
+.genres__text {
+  margin-top: 10px;
+  padding: 0;
+}
+
+.detailspage__title {
+  font-weight: 700;
+  border-bottom: 1px #acb0bd solid;
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.detailspage__info {
+  font-size: 14px;
+}
+.detailspage__episodes {
+  margin: 0;
+  padding: 0;
+}
+
+.detailspage__studios {
+  margin: 0;
+  padding: 0;
+}
+.detailspage__score {
+  margin: 0;
+  padding: 0;
+}
+
+.detailspage__date {
+  margin: 50px 0 0 0;
+  padding: 0;
+}
+
+@media screen and (max-width: 627px) {
+  .detailspage__container {
+    margin-top: 150px;
+  }
+  .detailspage__header {
+    margin-top: 800px 0 0;
+  }
+  .detailspage__content {
+    flex-direction: column;
+    align-items: center;
+  }
+  .detailspage__img-content {
+    width: 100%;
+    margin: 0;
+    padding: 10px 20px;
+    box-sizing: border-box;
+  }
+
+  .detailspage__context {
+    width: 100%;
+    margin: 0;
+    padding: 10px 20px;
+    box-sizing: border-box;
+  }
+  .detailspage__img {
+    width: 100%;
+    height: auto;
+    max-width: 300px;
+  }
+
+  .detailspage__context {
+    margin-top: 20px;
+    text-align: left;
+  }
+}

@@ -1,26 +1,24 @@
-import { useState, useEffect } from 'react'
-import reactLogo from "../../assets/react.svg"
-import viteLogo from "../../../public/vite.svg"
+import { Routes, Route } from "react-router-dom";
 import Header from "../Header/Header.jsx";
-import './App.css'
+import Footer from "../Footer/Footer.jsx";
+import SearchPage from "../SearchPage/SearchPage.jsx";
+import DetailsPage from "../DetailsPage/DetailsPage.jsx";
+import Main from "../Main/Main.jsx";
+import "./App.css";
 
 function App() {
-  // const [count, setCount] = useState(0)
-  // const [animeData, setAnimeData] = useState();
-  // const [search, setSearch] = useState('Naruto');
-  // // const getData = async() => {
-  //   const res = await fetch(`https://api.jikan.moe/v4/anime?q=${search}@limit=20`)
-  //   const resData = await res.json();
-  //   setAnimeData(resData.data);
-  // }
-  // useEffect(() => {
-  //   getData()
-  // }, [search])
   return (
-    <>
-      <Header/>
-    </>
-  )
+    <div className="page">
+      <div className="page__content">
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/search" element={<SearchPage />} />
+          <Route path="/details/:id" element={<DetailsPage />} />
+        </Routes>
+        <Footer />
+      </div>
+    </div>
+  );
 }
 
-export default App
+export default App;
